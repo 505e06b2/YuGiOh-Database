@@ -11,6 +11,7 @@ self.addEventListener("install", (e) => {
 			"js/main.js",
 			"js/database.js",
 
+			"assets/error.png",
 			"assets/attribute_dark.png",
 			"assets/attribute_divine.png",
 			"assets/attribute_earth.png",
