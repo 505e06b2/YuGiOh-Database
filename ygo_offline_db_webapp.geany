@@ -28,9 +28,14 @@ long_line_column=120
 
 [files]
 current_page=0
-FILE_NAME_0=14;HTML;0;EUTF-8;1;1;0;%2Fhome%2Fx%2Fprojects%2Fygo_offline_db_webapp%2Findex.html;0;4
-FILE_NAME_1=3443;Python;0;EUTF-8;1;1;0;%2Fhome%2Fx%2Fprojects%2Fygo_offline_db_webapp%2Fcreate_json_db.py;0;4
-FILE_NAME_2=1021;Lua;0;EUTF-8;1;1;0;%2Fhome%2Fx%2Fgames%2FProjectIgnis%2Fscript%2Fconstant.lua;0;4
+FILE_NAME_0=91;HTML;0;EUTF-8;1;1;0;%2Fhome%2Fx%2Fprojects%2Fygo_offline_db_webapp%2Findex.html;0;4
+FILE_NAME_1=163;CSS;0;EUTF-8;1;1;0;%2Fhome%2Fx%2Fprojects%2Fygo_offline_db_webapp%2Fcss%2Fmain.css;0;4
+FILE_NAME_2=2116;CSS;0;EUTF-8;1;1;0;%2Fhome%2Fx%2Fprojects%2Fygo_offline_db_webapp%2Fcss%2Fdisplay.css;0;4
+FILE_NAME_3=445;CSS;0;EUTF-8;1;1;0;%2Fhome%2Fx%2Fprojects%2Fygo_offline_db_webapp%2Fcss%2Fcard_colours.css;0;4
+FILE_NAME_4=2989;Javascript;0;EUTF-8;1;1;0;%2Fhome%2Fx%2Fprojects%2Fygo_offline_db_webapp%2Fjs%2Fmain.js;0;4
+FILE_NAME_5=265;Javascript;0;EUTF-8;1;1;0;%2Fhome%2Fx%2Fprojects%2Fygo_offline_db_webapp%2Fjs%2Fdatabase.js;0;4
+FILE_NAME_6=515;Javascript;0;EUTF-8;1;1;0;%2Fhome%2Fx%2Fprojects%2Fygo_offline_db_webapp%2Fservice_worker.js;0;4
+FILE_NAME_7=3423;Python;0;EUTF-8;1;1;0;%2Fhome%2Fx%2Fprojects%2Fygo_offline_db_webapp%2Fdb_generation%2Fcreate_json_db.py;0;4
 
 [VTE]
 last_dir=/home/x

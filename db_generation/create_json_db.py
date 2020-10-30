@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import sqlite3
+import glob
 
 query = """
 SELECT datas.id, datas.alias, datas.type, datas.atk, datas.def, datas.level, datas.race, datas.attribute, datas.category, texts.name, texts.desc
@@ -111,47 +112,53 @@ def getLinkMarkerList(i):
 
 # TABLE END
 
-conn = sqlite3.connect("BabelCDB/cards.cdb")
-c = conn.cursor()
-
-for card in c.execute(query):
-	if card[1] or "Token" in card[9]: #alias or token
+for db_file in ["BabelCDB/cards.cdb"] + glob.glob("BabelCDB/release*.cdb") + glob.glob("BabelCDB/prerelease*.cdb"):
+	if "unofficial" in db_file:
 		continue
 
-	#if any(x["name"] == card[9] for x in output):
-	#	print("!!! \"%s\" already exists !!!" % card[9])
+	print(db_file)
 
-	card_data = {
-		"name": card[9],
-		"id": card[0],
-		"desc": card[10],
-		"types": getCardTypesList(card[2])
-	}
+	conn = sqlite3.connect(db_file)
+	c = conn.cursor()
 
-	if "Monster" in card_data["types"]:
-		card_data["atk"] = card[3]
-		card_data["race"] = getRaceString(card[6])
-		card_data["attribute"] = getAttributeString(card[7])
+	for card in c.execute(query):
+		if card[1] or "Token" in card[9]: #alias or token
+			continue
 
-		if "Link" in card_data["types"]:
-			card_data["arrows"] = getLinkMarkerList(card[4])
-			card_data["level"] = card[5]
-		else: #standard monster
-			card_data["def"] = card[4]
+		#if any(x["name"] == card[9] for x in output):
+		#	print("!!! \"%s\" already exists !!!" % card[9])
 
-			if "Pendulum" in card_data["types"]:
-				card_data["scale"] = (card[5] & 0xff000000) >> 24 #move 3 bytes down
-				effects = card[10].replace("[ Pendulum Effect ]\n", "").replace("[ Monster Effect ]\n", "").split("\n----------------------------------------\n")
-				try:
-					card_data["desc"] = effects[1]
-					card_data["pendulum"] = effects[0]
-				except IndexError:
-					pass #no pendulum effect
-			card_data["level"] = (card[5] & 0x0000ffff) #removes duplicate line for Pendulums
+		card_data = {
+			"name": card[9],
+			"id": card[0],
+			"desc": card[10],
+			"types": getCardTypesList(card[2])
+		}
+
+		if "Monster" in card_data["types"]:
+			card_data["atk"] = card[3]
+			card_data["race"] = getRaceString(card[6])
+			card_data["attribute"] = getAttributeString(card[7])
+
+			if "Link" in card_data["types"]:
+				card_data["arrows"] = getLinkMarkerList(card[4])
+				card_data["level"] = card[5]
+			else: #standard monster
+				card_data["def"] = card[4]
+
+				if "Pendulum" in card_data["types"]:
+					card_data["scale"] = (card[5] & 0xff000000) >> 24 #move 3 bytes down
+					effects = card[10].replace("[ Pendulum Effect ]\n", "").replace("[ Monster Effect ]\n", "").split("\n----------------------------------------\n")
+					try:
+						card_data["desc"] = effects[1]
+						card_data["pendulum"] = effects[0]
+					except IndexError:
+						pass #no pendulum effect
+				card_data["level"] = (card[5] & 0x0000ffff) #removes duplicate line for Pendulums
 
 
-	output.append(card_data)
-	#print(getCardTypesList(card[2]))
+		output.append(card_data)
+		#print(getCardTypesList(card[2]))
 
 with open("../db.json", "w") as f:
 	output.sort(key=lambda x: x["name"])
