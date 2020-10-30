@@ -1,0 +1,8 @@
+{
+	"short_name": "Yu-Gi-Oh DB",
+	"name": "Yu-Gi-Oh Database",
+	"start_url": ".",
+	"background_color": "#333",
+	"theme_color": "#333",
+	"display": "standalone"
+}

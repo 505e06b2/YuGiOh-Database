@@ -1,0 +1,46 @@
+html, body {
+	color: #eee;
+	background: #333;
+	margin: 0px;
+	padding: 0px;
+}
+
+#search {
+	display: flex;
+	flex-direction: column;
+	max-height: 100vh;
+	height: 100vh;
+}
+
+#search-text {
+	display: block;
+	width: 100%;
+	flex: 0 0 32px;
+}
+
+#list {
+	overflow-y: scroll;
+	flex: 1;
+}
+
+#list > div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	height: 30px;
+	padding: 5px;
+	font-family: serif;
+	border-top: 1px solid rgba(0,0,0, 0.3);
+	cursor: pointer;
+	user-select: none;
+}
+
+#list > .error {
+	text-align: center;
+	color: #ff4444;
+}
+
+#list > .message {
+	text-align: center;
+}

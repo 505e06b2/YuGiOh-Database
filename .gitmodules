@@ -1,0 +1,3 @@
+[submodule "db_generation/BabelCDB"]
+	path = db_generation/BabelCDB
+	url = https://github.com/ProjectIgnis/BabelCDB

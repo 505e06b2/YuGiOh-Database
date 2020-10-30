@@ -1,0 +1,148 @@
+#display {
+	display: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	min-height: 100%;
+
+	padding: 10%;
+}
+
+#display .close {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	margin: 5px;
+	padding: 5px;
+	width: 25px;
+	height: 25px;
+
+	border-radius: 50%;
+	text-align: center;
+	background: rgba(255,64,64, 0.7);
+	cursor: pointer;
+	font-family: sans-serif;
+	user-select: none;
+}
+
+#display #top {
+	height: 10vh;
+}
+
+#display #top .line-1 {
+	display: flex;
+	height: 50%;
+	max-width: 80vw;
+}
+
+#display #top .line-1 .title-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	flex: 1 1 100%;
+	min-width: 0px;
+	margin-right: 1%;
+}
+
+#display #top .line-1 #title {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-weight: bold;
+
+	font-size: 120%;
+}
+
+#display #top .line-1 #attribute {
+	height: 100%;
+	flex: 0 0;
+}
+
+#display #top .line-2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	height: 50%;
+	font-weight: bold;
+	text-align: right;
+}
+
+#display[class*="xyz_monster"] #top .line-2 {
+	text-align: left;
+}
+
+#display.link_monster #top .line-2 {
+	text-align: center;
+}
+
+#display #top .line-2 .arrows {
+	background: #333;
+	color: orange;
+}
+
+#display #middle {
+	text-align: center;
+}
+
+#display #middle #standard {
+	height: 40vh;
+	margin-bottom: 10%;
+}
+
+#display #middle #standard #art {
+	border: 5px solid #555;
+	height: 100%;
+}
+
+#display #middle #pendulum {
+	display: flex;
+	flex-direction: column;
+	height: 60vh;
+}
+
+#display #middle #pendulum #art {
+	border: 5px solid #555;
+	object-position: 0px 0px;
+	min-height: 0px;
+	height: 10px;
+	width: 100%;
+	flex: 1 1 50%;
+	object-fit: cover;
+}
+
+#display #middle #pendulum #effect {
+	flex: 0 0 20%;
+}
+
+#display #middle #pendulum #effect,
+#display #bottom {
+	padding: 5%;
+	border: 4px solid brown;
+	color: black;
+	background: #ccc;
+}
+
+#display #bottom .types-container {
+	font-weight: bold;
+}
+
+#display #middle #pendulum #effect,
+#display #bottom #description {
+	font-family: sans-serif;
+	font-size: 90%;
+	text-align: justify;
+	white-space: pre-line;
+}
+
+#display #bottom #atkdef {
+	margin-top: 5%;
+	border-top: 1px solid black;
+	font-weight: bold;
+	text-align: right;
+}

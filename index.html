@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<title>Yugioh Database</title>
+		<meta charset="utf8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="manifest" href="manifest.webmanifest">
+
+		<link rel="stylesheet" href="css/card_colours.css">
+		<link rel="stylesheet" href="css/display.css">
+		<link rel="stylesheet" href="css/main.css">
+
+		<script src="js/database.js"></script>
+		<script src="js/main.js"></script>
+	</head>
+	<body>
+		<div id="search">
+			<input type="text" id="search-text" placeholder="Search..." onkeyup="if(event.key === 'Enter') displaySearch()">
+
+			<div id="list">
+				<div class="message">Use the textbox above to search</div>
+			</div>
+		</div>
+
+		<div id="display">
+			<div id="top">
+				<div class="line-1">
+					<div class="title-container"><span id="title"></span></div>
+					<img id="attribute" src="">
+				</div>
+				<div class="line-2">
+					<span id="levels"></span>
+				</div>
+			</div>
+
+			<div id="middle">
+				<div id="standard">
+					<img id="art" src=""> <!-- Handle onerror -->
+				</div>
+
+				<div id="pendulum">
+					<img id="art" src=""> <!-- Handle onerror -->
+					<div id="effect"></div>
+				</div>
+			</div>
+
+			<div id="bottom">
+				<div class="types-container">[<span id="types"></span>]</div>
+				<div id="description"></div>
+				<div id="atkdef"></div>
+			</div>
+			<span onclick="closeCard()" class="close">X</span>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+.normal_monster {
+	color: black;
+	background: #B48D52;
+}
+
+.effect_monster {
+	color: black;
+	background: #B0623E;
+}
+
+.fusion_monster {
+	color: white;
+	background: #773B95;
+}
+
+.xyz_monster {
+	color: white;
+	background: #23241F;
+}
+
+.link_monster {
+	color: white;
+	background: #095EB8;
+}
+
+.ritual_monster {
+	color: black;
+	background: #486EAC;
+}
+
+.synchro_monster {
+	color: black;
+	background: #DFD9D9;
+}
+
+.trap {
+	color: white;
+	background: #a74485;
+}
+
+.spell {
+	color: white;
+	background: #329169;
+}
+
+#list > .pendulum {
+	background-image: linear-gradient(to right, transparent, transparent, #329169, #329169);
+}
+
+.pendulum {
+	background-image: linear-gradient(to bottom, transparent, transparent, #329169, #329169);
+}
