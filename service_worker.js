@@ -1,15 +1,25 @@
 self.addEventListener("install", (e) => {
 	e.waitUntil( caches.open("ygo").then(
 		(cache) => cache.addAll([
-			"/",
-			"/db.json",
+			"index.html",
+			"db.json",
 
-			"/css/main.css",
-			"/css/display.css",
-			"/css/card_colours.css",
+			"css/main.css",
+			"css/display.css",
+			"css/card_colours.css",
 
-			"/js/main.js",
-			"/js/database.js",
+			"js/main.js",
+			"js/database.js",
+
+			"assets/attribute_dark.png",
+			"assets/attribute_divine.png",
+			"assets/attribute_earth.png",
+			"assets/attribute_fire.png",
+			"assets/attribute_light.png",
+			"assets/attribute_spell.png",
+			"assets/attribute_trap.png",
+			"assets/attribute_water.png",
+			"assets/attribute_wind.png",
 		])
 	));
 	//console.log("[SW] Installation complete");
