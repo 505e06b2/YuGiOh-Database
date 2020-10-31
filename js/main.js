@@ -37,7 +37,6 @@ function displaySearch() {
 }
 
 function displayCard(i) {
-	console.log(i);
 	const card = database.get()[i];
 	document.querySelector('#display #top #title').innerHTML = card["name"];
 	document.querySelector('#display #middle #limit').innerHTML = (card["limit"]) ? "Limit: " + card["limit"] : "";
@@ -105,6 +104,8 @@ function displayCard(i) {
 }
 
 function closeCard() {
+	document.querySelector('#standard #art').src = "";
+	document.querySelector('#pendulum #art').src = "";
 	document.querySelector('#search').style.display = "";
 	document.querySelector('#display').style.display = "";
 }

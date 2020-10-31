@@ -91,6 +91,11 @@
 	text-align: center;
 }
 
+#display #middle #art {
+	background-color: #555;
+	min-width: 40vh;
+}
+
 #display #middle #limit {
 	position: absolute;
 	top: 0px;
