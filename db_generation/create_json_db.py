@@ -2,6 +2,7 @@
 import json
 import sqlite3
 import glob
+import subprocess
 
 query = """
 SELECT datas.id, datas.alias, datas.type, datas.atk, datas.def, datas.level, datas.race, datas.attribute, datas.category, texts.name, texts.desc
@@ -10,6 +11,7 @@ where datas.id = texts.id
 """
 
 output = []
+banlist = {} #id: value
 
 # TABLE
 
@@ -112,6 +114,19 @@ def getLinkMarkerList(i):
 
 # TABLE END
 
+#update submodules
+subprocess.run("cd BabelCDB && git pull", shell=True)
+subprocess.run("cd LFLists && git pull", shell=True)
+
+#get banlist
+with open("LFLists/TCG.lflist.conf") as f:
+	for x in f.readlines():
+		if x[0] == "#" or x[0] == "!":
+			continue
+		data = x.split()
+		banlist[int(data[0])] = data[1]
+
+#create json
 for db_file in ["BabelCDB/cards.cdb"] + glob.glob("BabelCDB/release*.cdb") + glob.glob("BabelCDB/prerelease*.cdb"):
 	if "unofficial" in db_file:
 		continue
@@ -156,7 +171,9 @@ for db_file in ["BabelCDB/cards.cdb"] + glob.glob("BabelCDB/release*.cdb") + glo
 						pass #no pendulum effect
 				card_data["level"] = (card[5] & 0x0000ffff) #removes duplicate line for Pendulums
 
-
+		#banlist
+		if card[0] in banlist.keys():
+			card_data["limit"] = banlist[card[0]]
 		output.append(card_data)
 		#print(getCardTypesList(card[2]))
 

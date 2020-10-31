@@ -87,7 +87,17 @@
 }
 
 #display #middle {
+	position: relative;
 	text-align: center;
+}
+
+#display #middle #limit {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background: black;
+	color: red;
+	font-weight: bold;
 }
 
 #display #middle #standard {

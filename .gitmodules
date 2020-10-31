@@ -1,3 +1,6 @@
 [submodule "db_generation/BabelCDB"]
 	path = db_generation/BabelCDB
 	url = https://github.com/ProjectIgnis/BabelCDB
+[submodule "db_generation/LFLists"]
+	path = db_generation/LFLists
+	url = https://github.com/ProjectIgnis/LFLists

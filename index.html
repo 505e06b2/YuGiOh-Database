@@ -15,10 +15,13 @@
 	</head>
 	<body>
 		<div id="search">
-			<input type="text" id="search-text" placeholder="Search..." onkeyup="if(event.key === 'Enter') displaySearch()">
+			<div class="search-text-container">
+				<input disabled="disabled" value=" " type="text" id="search-text" placeholder="Search..." onkeyup="if(event.key === 'Enter') displaySearch()">
+				<span style="display: none" id="clear-search" onclick="clearSearch()">X</span>
+			</div>
 
 			<div id="list">
-				<div class="message">Use the textbox above to search</div>
+				<div class="message">Loading...</div>
 			</div>
 		</div>
 
@@ -42,6 +45,8 @@
 					<img id="art" src="assets/error.png" onerror="this.src = `assets/error.png`">
 					<div id="effect"></div>
 				</div>
+
+				<span id="limit"></span>
 			</div>
 
 			<div id="bottom">

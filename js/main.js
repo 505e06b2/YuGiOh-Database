@@ -2,14 +2,25 @@ const artwork_url = "https://storage.googleapis.com/ygoprodeck.com/pics_artgame/
 
 const database = new Database();
 
+function clearSearch() {
+	const search_elem = document.querySelector("#search-text");
+	search_elem.value = "";
+	search_elem.disabled = "";
+	search_elem.focus();
+
+	document.querySelector("#clear-search").style.display = "";
+	document.querySelector('#list').innerHTML = `<div class="message">Use the textbox above to search</div>`;
+}
+
 function displaySearch() {
 	const list_elem = document.querySelector('#list');
-	const search_text = document.getElementById("search-text").value;
+	const search_elem = document.getElementById("search-text");
+	const search_text = search_elem.value;
 
 	list_elem.scrollTo(0,0);
 
 	if(search_text.trim().length === 0) {
-		list_elem.innerHTML = `<div class="message">Use the textbox above to search</div>`;
+		clearSearch();
 		return;
 	}
 
@@ -22,12 +33,14 @@ function displaySearch() {
 		return;
 	}
 	list_elem.innerHTML = html;
+	search_elem.blur();
 }
 
 function displayCard(i) {
 	console.log(i);
 	const card = database.get()[i];
 	document.querySelector('#display #top #title').innerHTML = card["name"];
+	document.querySelector('#display #middle #limit').innerHTML = (card["limit"]) ? "Limit: " + card["limit"] : "";
 	document.querySelector('#display #bottom #description').innerHTML = card["desc"];
 
 	let attribute = card["types"][0].toLowerCase();
@@ -99,6 +112,7 @@ function closeCard() {
 window.onload = async () => {
 	if("serviceWorker" in navigator) navigator.serviceWorker.register("service_worker.js");
 	await database.update();
+	clearSearch();
 	//displayCard(3275);
 }
 
