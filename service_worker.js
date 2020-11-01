@@ -1,8 +1,9 @@
 self.addEventListener("install", (e) => {
-	e.waitUntil( caches.open("ygo").then(
-		(cache) => cache.addAll([
+	e.waitUntil((async () => {
+		return (await caches.open("ygo")).addAll([
 			"index.html",
 			"db.json",
+			"manifest.webmanifest",
 
 			"css/main.css",
 			"css/display.css",
@@ -22,19 +23,25 @@ self.addEventListener("install", (e) => {
 			"assets/attribute_water.png",
 			"assets/attribute_wind.png",
 		])
-	));
+	})());
 	//console.log("[SW] Installation complete");
 });
 
 self.addEventListener("fetch", (e) => {
+	const request_url = new URL(e.request.url);
+
 	if(navigator.onLine) {
-		console.log("[SW] Fetch let through", e.request.url);
-		e.respondWith(fetch(e.request));
+		e.respondWith((async () => {
+			const response = await fetch(e.request);
+			if(request_url.hostname === location.hostname) {
+				console.log("[SW] Updated cache for ", request_url.pathname);
+				(await caches.open("ygo")).put(e.request, response.clone());
+			}
+			return response;
+		})());
 		return;
 	}
 
-	console.log("[SW] Caught fetch", e.request.url);
-	e.respondWith( caches.match(e.request).then(
-		(response) => response || fetch(e.request)
-	));
+	console.log("[SW] Using cache for", request_url.pathname);
+	e.respondWith((async () => await caches.match(e.request))());
 });
