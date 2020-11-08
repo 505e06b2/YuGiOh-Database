@@ -30,7 +30,7 @@ self.addEventListener("install", (e) => {
 self.addEventListener("fetch", (e) => {
 	const request_url = new URL(e.request.url);
 
-	if(navigator.onLine) {
+	if(navigator.onLine) { //at some point, make it so that the only file check is db.json - for the moment, as this is WIP, this is okay
 		e.respondWith((async () => {
 			const response = await fetch(e.request);
 			if(request_url.hostname === location.hostname) {
